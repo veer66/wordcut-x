@@ -35,4 +35,10 @@ public class Wordcut {
 		var ch_text = text.toCharArray();
 		return Dag.buildDag(dix, ch_text);
 	}
+
+
+	public String putDelimiter(String text, String delim) {
+		var strList = segmentToStrList(text);		
+		return String.join(delim, strList);
+	}
 }

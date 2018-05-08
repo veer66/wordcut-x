@@ -27,4 +27,10 @@ public class TextRange {
 		Collections.reverse(ranges);
 		return ranges;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		var _o = (TextRange)o;
+		return _o.s == s && _o.e == e;
+	}
 }

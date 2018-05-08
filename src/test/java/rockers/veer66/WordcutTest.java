@@ -11,7 +11,7 @@ public class WordcutTest {
 
 	CharPrefixTree minDix;
 	Wordcut minWordcut;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		minDix = Dix.createDix(Arrays.asList("กา", "กาก"));
@@ -20,8 +20,21 @@ public class WordcutTest {
 
 	@Test
 	public void segment() {
-		var toks = minWordcut.segmentToStrList("กากกา");
-		assertEquals(Arrays.asList("กาก", "กา"), toks);
+		assertEquals(Arrays.asList("กาก", "กา"), minWordcut.segmentToStrList("กากกา"));
 	}
 
+	@Test
+	public void textRangeEquality() {
+		assertEquals(new TextRange(1, 2), new TextRange(1, 2));
+	}
+
+	@Test
+	public void segmentRanges() {
+		assertEquals(Arrays.asList(new TextRange(0, 3), new TextRange(3, 5)), minWordcut.segment("กากกา"));
+	}
+	
+	@Test
+	public void putDelimiter() {
+		assertEquals("กาก|กา", minWordcut.putDelimiter("กากกา", "|"));
+	}
 }
