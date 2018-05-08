@@ -61,8 +61,8 @@ public class Dag {
 
 	Dag(int size) {
 		dag = new ArrayList<>(size + 1);
-		IntStream.range(0, dag.size()).forEach(i -> {
-			dag.set(i, new ArrayList<>());
+		IntStream.range(0, size + 1).forEach(i -> {
+			dag.add(new ArrayList<>());
 		});
 		dag.get(0).add(new DagEdge(0, 0, EdgeType.INIT));
 	}

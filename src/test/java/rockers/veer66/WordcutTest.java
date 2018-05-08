@@ -51,4 +51,46 @@ public class WordcutTest {
 		assertEquals(new DagEdge(0,1,EdgeType.DICT), new DagEdge(0,1,EdgeType.DICT));
 	}
 	
+	@Test
+	public void basicDag() {
+		assertEquals(
+			Arrays.asList(
+				Arrays.asList(new DagEdge(0, 0, EdgeType.INIT)),     // 0
+				Arrays.asList(new DagEdge(0, 1, EdgeType.UNK)),      // 1
+				Arrays.asList(new DagEdge(0, 2, EdgeType.DICT)),     // 2
+				Arrays.asList(new DagEdge(0, 3, EdgeType.DICT)),     // 3
+				Arrays.asList(new DagEdge(3, 4, EdgeType.UNK)),      // 4
+				Arrays.asList(new DagEdge(3, 5, EdgeType.DICT))),    // 5
+			minWordcut.buildDag("กากกา"));		
+	}
+	
+	@Test
+	public void dagWithPunc() {
+		assertEquals(Arrays.asList(
+				Arrays.asList(new DagEdge(0, 0, EdgeType.INIT)),     // 0
+				Arrays.asList(new DagEdge(0, 1, EdgeType.UNK)),      // 1
+				Arrays.asList(new DagEdge(0, 2, EdgeType.DICT)),     // 2
+				Arrays.asList(new DagEdge(2, 3, EdgeType.PUNC)),     // 3
+				Arrays.asList(new DagEdge(3, 4, EdgeType.UNK)),      // 4
+				Arrays.asList(new DagEdge(3, 5, EdgeType.DICT))),    // 5
+			minWordcut.buildDag("กา กา"));	
+	}
+		
+	@Test
+	public void dagWithLatin() {
+		assertEquals(Arrays.asList(
+				Arrays.asList(new DagEdge(0, 0, EdgeType.INIT)),     // 0
+				Arrays.asList(new DagEdge(0, 1, EdgeType.UNK)),      // 1
+				Arrays.asList(new DagEdge(0, 2, EdgeType.DICT)),     // 2
+				Arrays.asList(new DagEdge(2, 3, EdgeType.UNK)),     // 3
+				Arrays.asList(new DagEdge(2, 4, EdgeType.LATIN))),     // 4
+			minWordcut.buildDag("กาAB"));
+	}
+	
+	@Test
+	public void dagEmpty() {
+		assertEquals(Arrays.asList(
+				Arrays.asList(new DagEdge(0, 0, EdgeType.INIT))),     // 0
+			minWordcut.buildDag(""));	
+	}
 }

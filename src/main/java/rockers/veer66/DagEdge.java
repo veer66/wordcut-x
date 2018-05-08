@@ -16,4 +16,9 @@ public class DagEdge {
 		var _o = (DagEdge)o;
 		return _o.s == s && _o.e == e && _o.etype == etype;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("(DAG-EDGE :s %d :e %d :etype %s)", s, e, etype);
+	}
 }

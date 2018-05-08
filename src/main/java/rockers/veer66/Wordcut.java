@@ -35,9 +35,9 @@ public class Wordcut {
 		return pathToStrList(path, ch_text);
 	}
 	
-	public Dag buildDag(String text) {
+	public List<List<DagEdge>> buildDag(String text) {
 		var ch_text = text.toCharArray();
-		return Dag.buildDag(dix, ch_text);
+		return Dag.buildDag(dix, ch_text).dag;
 	}
 
 
