@@ -2,6 +2,7 @@ package rockers.veer66;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -36,5 +37,12 @@ public class WordcutTest {
 	@Test
 	public void putDelimiter() {
 		assertEquals("กาก|กา", minWordcut.putDelimiter("กากกา", "|"));
+	}
+	
+	@Test
+	public void wordlistFromFile() throws IOException {
+		var url = WordcutTest.class.getResource("/two_thai_words.txt");
+		var wordcut = Wordcut.fromDixUrl(url);
+		assertEquals("กาก|กา", wordcut.putDelimiter("กากกา", "|"));
 	}
 }

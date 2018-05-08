@@ -1,5 +1,9 @@
 package rockers.veer66;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,5 +44,14 @@ public class Wordcut {
 	public String putDelimiter(String text, String delim) {
 		var strList = segmentToStrList(text);		
 		return String.join(delim, strList);
+	}
+
+
+	public static Wordcut fromDixUrl(URL url) throws IOException {
+		var isr = new InputStreamReader(url.openStream(), "UTF-8");
+		var br = new BufferedReader(isr);
+		var lines = br.lines().collect(Collectors.toList());
+		var dix = Dix.createDix(lines);
+		return new Wordcut(dix);
 	}
 }
