@@ -11,4 +11,9 @@ public class DagEdge {
 		this.etype = etype;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		var _o = (DagEdge)o;
+		return _o.s == s && _o.e == e && _o.etype == etype;
+	}
 }

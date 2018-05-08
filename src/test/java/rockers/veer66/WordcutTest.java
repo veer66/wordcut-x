@@ -45,4 +45,10 @@ public class WordcutTest {
 		var wordcut = Wordcut.fromDixUrl(url);
 		assertEquals("กาก|กา", wordcut.putDelimiter("กากกา", "|"));
 	}
+	
+	@Test
+	public void dagEdgeEquality() {
+		assertEquals(new DagEdge(0,1,EdgeType.DICT), new DagEdge(0,1,EdgeType.DICT));
+	}
+	
 }
