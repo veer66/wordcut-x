@@ -40,6 +40,7 @@ public class Dag {
 		for (var i = 0; i < text.length; i++) {
 			context.ch = text[i];
 			context.i = i;
+			context.bestEdge = null;
 			for (var builder : builders) {
 				var edge = builder.build(context, path);
 				if (Edge.isBetterThan(edge, context.bestEdge)) {

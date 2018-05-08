@@ -70,7 +70,7 @@ public class PatEdgeBuilder implements EdgeBuilder, DagEdgeBuilder {
 
 	@Override
 	public Edge build(EdgeBuildingContext context, List<Edge> path) {
-		var nextChar = context.i == context.text.length ? null : context.text[context.i + 1];
+		var nextChar = context.i + 1 == context.text.length ? null : context.text[context.i + 1];
 		transit(context.ch, nextChar);
 		if (!isPatFinal())
 			return null;

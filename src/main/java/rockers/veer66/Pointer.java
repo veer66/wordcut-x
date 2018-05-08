@@ -28,4 +28,9 @@ public class Pointer {
 		var source = path.get(s);
 		return new Edge(s, EdgeType.DICT, source.w + 1, source.unk);
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("(POINTER :node-id %d :s %d :offset %d :is-final :s", nodeId, s, offset, isFinal);
+	}
 }

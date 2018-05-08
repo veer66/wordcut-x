@@ -32,4 +32,10 @@ public class Edge {
 		if (b == null) return true;
 		return a.isBetterThan(b);
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("(EDGE :p %d :etype %s :w %d :unk %d)", p, etype, w, unk);
+	}
+	
 }

@@ -16,7 +16,12 @@ public class DictEdgeBuilder implements EdgeBuilder, DagEdgeBuilder {
 	}
 	
 	public void addPointer(EdgeBuildingContext context) {
-		pointers.set(pointers_size, new Pointer(0,context.i, 0,false));
+		var p = new Pointer(0,context.i, 0,false);
+		
+		if (pointers.size() <= pointers_size)
+			pointers.add(p);
+		else
+			pointers.set(pointers_size, p);
 		pointers_size++;
 	}
 	
@@ -35,18 +40,16 @@ public class DictEdgeBuilder implements EdgeBuilder, DagEdgeBuilder {
 	public Edge genEdge(List<Edge> path) {
 		Edge bestEdge = null;
 		for (var i = 0; i < pointers_size; i++) {
-			var pointer = pointers.get(i);
+			var pointer = pointers.get(i);			
 			if (pointer.isFinal) {
-				var edge = pointer.genEdge(path);
+				var edge = pointer.genEdge(path);				
 				if (bestEdge == null) {
 					bestEdge = edge;
 				} else if (edge.isBetterThan(bestEdge)) {
 					bestEdge = edge;
-				}
-					
-				
+				}									
 			}
-		}
+		}		
 		return bestEdge;
 	}
 	
