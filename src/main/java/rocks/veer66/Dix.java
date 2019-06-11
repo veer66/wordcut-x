@@ -1,10 +1,7 @@
-package rockers.veer66;
+package rocks.veer66;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import rockers.veer66.StrItem;
-import rockers.veer66.CharPrefixTree;;
 
 public class Dix {
 	public static CharPrefixTree createDix(List<String> sortedWordList) {

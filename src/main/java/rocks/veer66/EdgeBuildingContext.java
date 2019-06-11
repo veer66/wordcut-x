@@ -1,4 +1,4 @@
-package rockers.veer66;
+package rocks.veer66;
 
 public class EdgeBuildingContext {
 	public char[] text;

@@ -1,4 +1,4 @@
-package rockers.veer66;
+package rocks.veer66;
 
 import java.util.ArrayList;
 import java.util.Arrays;
